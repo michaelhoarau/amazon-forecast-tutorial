@@ -21,12 +21,12 @@ Amazon Forecast imports the training data from any S3 bucket: let's create one t
 
 1. Access the S3 management console by typing S3 as shown below:
 
-![Access S3 console](pictures/console_s3.png")
+![Access S3 console](pictures/console_s3.png)
  
 2. Press [Create Bucket]
 
-![Create S3 Bucket](pictures/s3_create_bucket.png")
- 
+![Create S3 Bucket](pictures/s3_create_bucket.png)
+
 3. Enter an appropriate name in [Bucket Name]
 
 The S3 bucket must have a reasonably long name because it must be unique across all AWS users. Specify the same region as the region in which you will be working on Amazon Forecast.
