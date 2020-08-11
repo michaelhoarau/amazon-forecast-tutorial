@@ -57,32 +57,32 @@ Create the required permissions for Forecast to access S3. The permissions creat
 
 1. Access the IAM management console in the same way as S3.
 
-![pictures/console_iam.png]
-![pictures/iam_landing_page.png]
+![Navigating to IAM console](pictures/console_iam.png)
+![IAM Landing page](pictures/iam_landing_page.png)
 
 2. Select **Roles** in the navigation pane on the left side of the screen.
 
-![pictures/iam_create_role.png]
+![IAM Create Role](pictures/iam_create_role.png)
 
 3. Click the [Create role] button
 
-![pictures/iam_step1.png]
+![IAM Forecast role step 1](pictures/iam_step1.png)
 
 4. Select [Forecast] from [Select a service to view is use cases] and press [Next: Permissions].
 
-![pictures/iam_step2.png]
+![IAM Forecast role step 2](pictures/iam_step2.png)
 
 5. Press [Next: Tags] at the bottom right of the screen. Do not enter anything on the tag screen that appears next, and press [Next: Review].
 
-![pictures/iam_step3.png]
+![IAM Forecast role step 3](pictures/iam_step3.png)
 
 6. Enter an appropriate name in [Role Name] and press [Create Role].
 
-![pictures/iam_role_created.png]
+![IAM Forecast role created](pictures/iam_role_created.png)
 
 7. Creation is complete. Click on the created role to go to the details screen. Make a note of [Role ARN] because we will grant this role to Forecast later and give S3 access to Forecast:
 
-![pictures/iam_role_summary.png]
+![IAM Forecast role summary](pictures/iam_role_summary.png)
 
 ## Go to the Forecast screen in the same way as S3, IAM.
 
