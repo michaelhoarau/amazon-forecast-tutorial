@@ -9,7 +9,6 @@ Please check with your instructor about the regions where you will be working fo
 ![Region selection](pictures/region_selection.png "Region selection")
  
 ## Download data for learning
-https://bit.ly/2Oof8qe
 [This CSV file](data/electricityusagedata.csv) includes power consumption data for individual households. Here's a snippet of this file:
  
 ![Data snippet](pictures/data_snippet.png "Data snippet")
@@ -31,27 +30,27 @@ Amazon Forecast imports the training data from any S3 bucket: let's create one t
 
 The S3 bucket must have a reasonably long name because it must be unique across all AWS users. Specify the same region as the region in which you will be working on Amazon Forecast.
 
-![](s3_create_bucket_dialog.png)
+![Create S3 Bucket Dialog Box](s3_create_bucket_dialog.png)
 
 Click the **Create** button on the bottom left of this dialog box to create an S3 buckets with default parameters.
 
 4. Click on the name of the created bucket
 
-![](s3_bucket_created.png)
+![Created bucket](s3_bucket_created.png)
 
 5. Press [Upload]
 
-![](s3_upload.png)
+![Upload file to bucket](s3_upload.png)
 
 6. Select [electricityusagedata.csv] downloaded earlier by dragging and dropping.
 
-![](s3_upload_selected.png)
+![Select file to upload](s3_upload_selected.png)
 
 7. Click the [Upload] button at the bottom left of the screen to start uploading.
 
 8. The following screen will be displayed when the upload is completed.
 
-![](s3_upload_completed.png)
+!(s3_upload_completed.png)
 
 ## Creating an IAM role
 Create the required permissions for Forecast to access S3. The permissions created here will be attached to Forecast later and you will be able to access S3.
