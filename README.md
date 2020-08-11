@@ -30,59 +30,59 @@ Amazon Forecast imports the training data from any S3 bucket: let's create one t
 
 The S3 bucket must have a reasonably long name because it must be unique across all AWS users. Specify the same region as the region in which you will be working on Amazon Forecast.
 
-![Create S3 Bucket Dialog Box](s3_create_bucket_dialog.png)
+![Create S3 Bucket Dialog Box](pictures/s3_create_bucket_dialog.png)
 
 Click the **Create** button on the bottom left of this dialog box to create an S3 buckets with default parameters.
 
 4. Click on the name of the created bucket
 
-![Created bucket](s3_bucket_created.png)
+![Created bucket](pictures/s3_bucket_created.png)
 
 5. Press [Upload]
 
-![Upload file to bucket](s3_upload.png)
+![Upload file to bucket](pictures/s3_upload.png)
 
 6. Select [electricityusagedata.csv] downloaded earlier by dragging and dropping.
 
-![Select file to upload](s3_upload_selected.png)
+![Select file to upload](pictures/s3_upload_selected.png)
 
 7. Click the [Upload] button at the bottom left of the screen to start uploading.
 
 8. The following screen will be displayed when the upload is completed.
 
-!(s3_upload_completed.png)
+!(pictures/s3_upload_completed.png)
 
 ## Creating an IAM role
 Create the required permissions for Forecast to access S3. The permissions created here will be attached to Forecast later and you will be able to access S3.
 
 1. Access the IAM management console in the same way as S3.
 
-![](console_iam.png)
-![](iam_landing_page.png)
+!(pictures/console_iam.png)
+!(pictures/iam_landing_page.png)
 
 2. Select **Roles** in the navigation pane on the left side of the screen.
 
-![](iam_create_role.png)
+!(pictures/iam_create_role.png)
 
 3. Click the [Create role] button
 
-![](iam_step1.png)
+!(pictures/iam_step1.png)
 
 4. Select [Forecast] from [Select a service to view is use cases] and press [Next: Permissions].
 
-![](iam_step2.png)
+!(pictures/iam_step2.png)
 
 5. Press [Next: Tags] at the bottom right of the screen. Do not enter anything on the tag screen that appears next, and press [Next: Review].
 
-![](iam_step3.png)
+!(pictures/iam_step3.png)
 
 6. Enter an appropriate name in [Role Name] and press [Create Role].
 
-![](iam_role_created.png)
+!(pictures/iam_role_created.png)
 
 7. Creation is complete. Click on the created role to go to the details screen. Make a note of [Role ARN] because we will grant this role to Forecast later and give S3 access to Forecast:
 
-![](iam_role_summary.png)
+!(pictures/iam_role_summary.png)
 
 ## Go to the Forecast screen in the same way as S3, IAM.
 
