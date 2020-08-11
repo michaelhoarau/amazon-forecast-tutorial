@@ -4,94 +4,92 @@
 Introduction: Amazon Forecast is a machine learning service that provides prediction based on time series data provided by AWS.
 
 ## Region selection
-Please check with your instructor about the regions where you will be working with this hands-on. You can change it by selecting the place name in the upper right of the screen:
+Please check with your instructor about the regions where you will be working for this hands-on. You can change it by selecting the region name in the upper right of the screen:
 
 ![Region selection](pictures/region_selection.png "Region selection")
  
-
 ## Download data for learning
 https://bit.ly/2Oof8qe
-This CSV file includes power consumption data for individual household. Here's a snippet:
+[This CSV file](data/electricityusagedata.csv) includes power consumption data for individual households. Here's a snippet of this file:
  
- [[picture]
+![Data snippet](pictures/data_snippet.png "Data snippet")
 
 In this hands-on workshop, future power consumption will be predicted based on this time series data. Amazon Forecast can process any time series data, so sales data, inventory consumption data, etc. can also be used.
 
 ## Creating an S3 bucket
-Amazon Forecast imports the training data from any S3 bucket: let's create an S3 bucket to store the CSV file downloaded earlier.
+Amazon Forecast imports the training data from any S3 bucket: let's create one to store the CSV file downloaded earlier.
 
 1. Access the S3 management console by typing S3 as shown below:
 
-[[picture]]
+![Access S3 console](pictures/console_s3.png")
  
 2. Press [Create Bucket]
 
-[[picture]]
+![Create S3 Bucket](pictures/s3_create_bucket.png")
  
 3. Enter an appropriate name in [Bucket Name]
 
 The S3 bucket must have a reasonably long name because it must be unique across all AWS users. Specify the same region as the region in which you will be working on Amazon Forecast.
 
-[[picture]]
+![](s3_create_bucket_dialog.png)
 
-All will create S3 buckets by default, so press [Next] twice at the bottom right of the screen and finally [Create bucket].
+Click the **Create** button on the bottom left of this dialog box to create an S3 buckets with default parameters.
 
-4. Double click the created bucket.
+4. Click on the name of the created bucket
 
-[[picture]]
+![](s3_bucket_created.png)
 
 5. Press [Upload]
 
-[[picture]]
+![](s3_upload.png)
 
 6. Select [electricityusagedata.csv] downloaded earlier by dragging and dropping.
 
-[[picture]]
+![](s3_upload_selected.png)
 
 7. Click the [Upload] button at the bottom left of the screen to start uploading.
 
-[[picture]]
-
 8. The following screen will be displayed when the upload is completed.
 
-[[picture]]
+![](s3_upload_completed.png)
 
 ## Creating an IAM role
 Create the required permissions for Forecast to access S3. The permissions created here will be attached to Forecast later and you will be able to access S3.
 
 1. Access the IAM management console in the same way as S3.
 
-[[picture]]
+![](console_iam.png)
+![](iam_landing_page.png)
 
-2. Select a role in the navigation pane on the left side of the screen.
+2. Select **Roles** in the navigation pane on the left side of the screen.
 
-[[picture]]
+![](iam_create_role.png)
 
-3. [Create role]
+3. Click the [Create role] button
 
-[[picture]]
+![](iam_step1.png)
 
-4. Select [Forecast] from [Select a service that uses this role] and press [Next step].
+4. Select [Forecast] from [Select a service to view is use cases] and press [Next: Permissions].
 
-[[picture]]
+![](iam_step2.png)
 
-5. Press [Next Step] at the bottom right of the screen. Do not enter anything on the tag screen that appears next, and press [Next step] again.
+5. Press [Next: Tags] at the bottom right of the screen. Do not enter anything on the tag screen that appears next, and press [Next: Review].
 
-[[picture]]
+![](iam_step3.png)
 
-6. Enter an appropriate name in [Roll Name] and press [Create Role].
+6. Enter an appropriate name in [Role Name] and press [Create Role].
 
-[[picture]]
+![](iam_role_created.png)
 
-7. Creation is complete. Click on the created role to go to the details screen. Make a note of [Role ARN] because we will grant this role to Forecast later and give S3 access to Forecast.
+7. Creation is complete. Click on the created role to go to the details screen. Make a note of [Role ARN] because we will grant this role to Forecast later and give S3 access to Forecast:
 
-[[picture]]
+![](iam_role_summary.png)
 
 ## Go to the Forecast screen in the same way as S3, IAM.
 
 [[picture]]
 
-1. Press [Create dataset group].
+1. Click on **View dataset groups** button on the welcome screen and then press [Create dataset group] on the interface below:
 
 [[picture]]
 
@@ -101,7 +99,26 @@ Create the required permissions for Forecast to access S3. The permissions creat
 
 3. Enter an appropriate name in [Data set name]. Select [hour] for [Frequency of your data]. (This value must match the time series interval of the original data to be learned.)
 
-4. To match the value of [Data Schema] to the order of the original data to be learned, replace it as follows.
+4. To match the value of [Data Schema] to the order of the original data to be learned, replace it as follows:
+
+```json
+{
+  "Attributes": [
+    {
+      "AttributeName": "timestamp",
+      "AttributeType": "timestamp"
+    },
+    {
+      "AttributeName": "target_value",
+      "AttributeType": "float"
+    },
+    {
+      "AttributeName": "item_id",
+      "AttributeType": "string"
+    }
+  ]
+}
+```
 
 5. Press [Next]
 
