@@ -6,7 +6,7 @@ Introduction: Amazon Forecast is a machine learning service that provides predic
 ## Region selection
 Please check with your instructor about the regions where you will be working with this hands-on. You can change it by selecting the place name in the upper right of the screen:
 
-[[Picture]]
+![Region selection](pictures/region_selection.png "Region selection")
  
 
 ## Download data for learning
