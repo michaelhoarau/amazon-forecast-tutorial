@@ -22,11 +22,11 @@ Amazon Forecast imports the training data from any S3 bucket: let's create one t
 
 ![Access S3 console](pictures/console_s3.png)
  
-2. Press [Create Bucket]
+2. Press **Create Bucket**
 
 ![Create S3 Bucket](pictures/s3_create_bucket.png)
 
-3. Enter an appropriate name in [Bucket Name]
+3. Enter an appropriate name in **Bucket Name**
 
 The S3 bucket must have a reasonably long name because it must be unique across all AWS users. Specify the same region as the region in which you will be working on Amazon Forecast.
 
@@ -38,15 +38,15 @@ Click the **Create** button on the bottom left of this dialog box to create an S
 
 ![Created bucket](pictures/s3_bucket_created.png)
 
-5. Press [Upload]
+5. Press **Upload**
 
 ![Upload file to bucket](pictures/s3_upload.png)
 
-6. Select [electricityusagedata.csv] downloaded earlier by dragging and dropping.
+6. Select `electricityusagedata.csv` downloaded earlier by dragging and dropping the file or by clicking the **Add files** button.
 
 ![Select file to upload](pictures/s3_upload_selected.png)
 
-7. Click the [Upload] button at the bottom left of the screen to start uploading.
+7. Click the **Upload** button at the bottom left of the screen to start uploading.
 
 8. The following screen will be displayed when the upload is completed.
 
@@ -65,23 +65,23 @@ Create the required permissions for Forecast to access S3. The permissions creat
 
 ![IAM Create Role](pictures/iam_create_role.png)
 
-3. Click the [Create role] button
+3. Click the **Create role** button
 
 ![IAM Forecast role step 1](pictures/iam_step1.png)
 
-4. Select [Forecast] from [Select a service to view is use cases] and press [Next: Permissions].
+4. Select **Forecast** from **Select a service to view is use cases** and press **Next: Permissions**.
 
 ![IAM Forecast role step 2](pictures/iam_step2.png)
 
-5. Press [Next: Tags] at the bottom right of the screen. Do not enter anything on the tag screen that appears next, and press [Next: Review].
+5. Press **Next: Tags** at the bottom right of the screen. No need to enter something on the tag screen that appears next. Press **Next: Review**.
 
 ![IAM Forecast role step 3](pictures/iam_step3.png)
 
-6. Enter an appropriate name in [Role Name] and press [Create Role].
+6. Enter an appropriate name in **Role Name** and press **Create Role**.
 
 ![IAM Forecast role created](pictures/iam_role_created.png)
 
-7. Creation is complete. Click on the created role to go to the details screen. Make a note of [Role ARN] because we will grant this role to Forecast later and give S3 access to Forecast:
+7. Creation is complete. Click on the created role to go to the details screen. Make a note of **Role ARN** because we will associate this role to Forecast later and grand S3 access to the service:
 
 ![IAM Forecast role summary](pictures/iam_role_summary.png)
 
@@ -93,19 +93,19 @@ Create the required permissions for Forecast to access S3. The permissions creat
 
 ![Forecast Landing Page](pictures/forecast_landing_page.png)
 
-Then, press [Create dataset group] on the interface below:
+Then, press **Create dataset group** on the interface below: a dataset group is a collection of complimentary datasets that detail a set of changing parameters over a series of time. After creating a dataset group, you use it to train one or more predictors.
 
 ![Forecast Dataset Group](pictures/forecast_dataset_group.png)
 
-2. Enter an appropriate name in [Data set group name], set [Forecasting domain] to [Custom] and press [Next].
+2. Enter an appropriate name in **Dataset group name**, set **Forecasting domain** to **Custom** and press **Next**. A *dataset domain* specifies a pre-defined dataset schema for a common use case, and does not impact model algorithms or hyperparameters.
 
 ![Forecast Dataset Group Step 1](pictures/forecast_dataset_group_step1.png)
 
-3. Enter an appropriate name in [Data set name]. Select [hour] for [Frequency of your data]. (This value must match the time series interval of the original data to be learned.)
+3. Enter an appropriate name in **Dataset name**. Select **hour** for **Frequency of your data**: this value must match the time series interval of the original data to be learned.
 
 ![Forecast Target Dataset](pictures/forecast_target_dataset_step2.png)
 
-4. To match the value of [Data Schema] to the order of the original data to be learned, replace it as follows:
+4. To match the value of **Data Schema** to the order of the original data to be trained on, replace the data schema by the following value:
 
 ```json
 {
@@ -126,19 +126,19 @@ Then, press [Create dataset group] on the interface below:
 }
 ```
 
-5. Press [Next]
+5. Press **Next**
 
-6. If the following green bar is displayed, the Dataset is set correctly:
+6. If the following green bar is displayed, the dataset is set correctly:
 
 ![Forecast import successful](pictures/forecast_dataset_created.png)
 
-Next, click Import
+Next, click **Import**
 
-7. Enter an appropriate name in [Data set import name]. [Time stamp format] must be a notation that matches the original data to be imported, but in this hands-on the original data and the default value are the same, so leave it as it is. Paste the newly created IAM Role ARN that you copied in [Custom IAM role ARN].
+7. Enter an appropriate name in **Data set import name**. **Time stamp format** must be a notation that matches the original data to be imported, but in this hands-on the original data and the default value are the same, so leave it as it is. Paste the newly created IAM Role ARN that you copied in **Custom IAM role ARN**.
 
 ![Forecast Target Dataset](pictures/forecast_import_target_dataset.png)
 
-8. Enter the source data for learning that you uploaded earlier in [Data location] in the following format, and click [Start Import]: `s3://<bucket name>/<file name>`
+8. Enter the source data for learning that you uploaded earlier in **Data location** in the following format, and click **Start Import**: `s3://<bucket name>/<file name>`
 (Please note that it is different from the URI that can be accessed from the outside).
 
 ![Forecast Start Import](pictures/forecast_start_import.png)
@@ -147,7 +147,7 @@ Next, click Import
 
 ![Forecast import dataset pending](pictures/forecast_import_dataset_pending.png)
 
-10. The import is complete when [Active] is displayed in green as shown below:
+10. The import is complete when **Active** is displayed in green as shown below. Note that each dataset group can have up to three datasets, one of each dataset type: target time series (like the one we just created), related time series, and item metadata.
 
 ![Forecast import dataset active](pictures/forecast_import_dataset_active.png)
 
@@ -156,16 +156,17 @@ Now that the data has been imported, we can start learning a new model from thes
 
 ![Predictor Start](pictures/predictor_start.png)
 
-1. Press [Start] of [Train a predictor]:
+1. Press **Start** in the **Train a predictor** section:
 
 ![Predictor Start](pictures/predictor_name.png)
 
-2. Enter an appropriate name in Predictor name. [Forecast horizon] is the time interval for forecasting. In this hands-on, enter [36] to create a forecast of 36 (for 36 hours):
+2. Enter an appropriate name in Predictor name. **Forecast horizon** is the time interval for forecasting. In this hands-on, enter **36** to create a forecast of 36-intervals long (for 36 hours in this case):
 
 ![Predictor Continue](pictures/predictor_details.png)
 
-3. [Forecast frequency] must be the same as the original data, so select [hour]. Leave [Algorithm selection] as [Manual] and select [ETS] for [Algorithm].
-4. Press [Train predictor] with all remaining values unchanged.
+3. **Forecast frequency** must be the same as the original data, so select **hour**. Leave **Algorithm selection** as **Manual** and select **ETS** for **Algorithm**.
+
+4. Press **Train predictor** with all remaining values unchanged.
 
 ![Predictor Train](pictures/predictor_train.png)
 
@@ -173,35 +174,34 @@ Now that the data has been imported, we can start learning a new model from thes
 
 ![Predictor Pending](pictures/predictor_pending.png)
 
-6. Learning is completed when [Active] is displayed as shown below:
+6. Learning is completed when **Active** is displayed as shown below:
 
 ![Predictor Active](pictures/predictor_active.png)
 
 ## Creating a prediction endpoint
-Now that learning has started, create an endpoint to make predictions:
+Now that learning is done, let's create an endpoint to request some predictions:
 
 ![Forecast start](pictures/generate_forecast_start.png)
 
-1. Click the [Start] button at the [Generate forecasts] on the right side of the screen.
+1. Click the **Start** button next to the **Generate forecasts** section on the right side of the screen.
  
-2．　Enter an appropriate name in [Forecast name]. From the [Predictor] dropdown, select the name you gave to the learning environment.
-*If nothing is displayed, press cancel and try again to display it.*
+2．　Enter an appropriate name in **Forecast name**. From the **Predictor** dropdown, select the name you gave to the model trained earlier:
 
 ![Forecast details](pictures/generate_forecast_details.png)
  
-3. Press the [Create a forecast] button.
+3. Press the **Create a forecast** button.
  
-4. It will be a little long because the prediction endpoint will start to be generated:
+4. This will take some time, as the prediction endpoint will start:
 
 ![Forecast pending](pictures/generate_forecast_pending.png)
 
-5. The following display is complete. You can now predict:
+5. The following display shows our predictor is ready to servce predictions. You can now predict!
 
 ![Forecast active](pictures/generate_forecast_active.png)
 
 ## Make a prediction
-With the procedure below, you can make a prediction from the trained data:
-1. Press [Look up Forecast]. Then, for [Forecast], select the name of the endpoint created earlier from the drop-down:
+Let's make a prediction from the trained predictor:
+1. Press **Look up Forecast**. Then, for **Forecast**, select the name of the endpoint created earlier from the drop-down:
 
 ![Prediction lookup](pictures/prediction_lookup.png)
 
@@ -213,5 +213,8 @@ With the procedure below, you can make a prediction from the trained data:
 
 ![Prediction plot](pictures/prediction_example.png)
  
-The numbers P10, P50, and P90 have a probability of 10%, 50%, and 90%, respectively, and include actual demand. It means that there is a 90% chance of being within that range (below the value). The larger the number of PXX, the higher the probability that the prediction will fall within that value, but the blur width will increase, so we recommend using the value of P50 first.
+The numbers P10, P50, and P90 have a probability of 10%, 50%, and 90%, respectively, and include actual demand. It means that there is an 80% chance (90 - 10 = 80) of being within that range (below the highest value). The larger the number of PXX, the higher the probability that the prediction will fall within that value, but the blur width will increase, so we recommend using the value of P50 first.
 
+# Conclusion
+---
+If you want to see how to perform the same kind of operations by using the Amazon Forecast API, you can follow the notebooks and start by the data preparation one.
