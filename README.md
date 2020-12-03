@@ -3,7 +3,7 @@
 
 Introduction: Amazon Forecast is a machine learning service that provides prediction based on time series data provided by AWS. In this repository, you will find a tutorial to walk you through an energy consumption use case with two different methods:
 1. For the first method, you will only use the service console and this will be 100% no-code.
-2. For the second method, you will fire up a SageMaker Notebook Instance and perform exactly the same process by using the Amazon Forecast API as documented [here](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecast.html)(for datasets and models management features) and [here](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecastquery.html) (for the query service).
+2. For the second method, you will fire up a SageMaker Notebook Instance and perform exactly the same process by using the Amazon Forecast API as documented [here](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecast.html) (for datasets and models management features) and [here](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecastquery.html) (for the query service).
 
 ## Region selection
 Please check with your instructor about the regions where you will be working for this hands-on. You can change it by selecting the region name in the upper right of the screen:
